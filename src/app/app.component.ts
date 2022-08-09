@@ -16,7 +16,7 @@ export class AppComponent {
       // optionBExtra: new FormControl(''),
       // optionCExtra: new FormControl(''),
       text1: new FormControl(''),
-      text2: new FormControl('')
+      text2: new FormControl(''),
     });
   }
   //   this.optionB.valueChanges.subscribe((checked) => {
@@ -81,8 +81,22 @@ export class AppComponent {
   //     return true;
   //   }
   // }
-
-  save() {
-
+  get fc() {
+    return this.form.controls;
   }
+  onchanges() {
+    this.form.valueChanges.subscribe((checked) => {
+      if (checked) {
+        this.fc.text1.setValidators([
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(10),
+        ]);
+      } else {
+        this.fc.text1.setValidators(null);
+      }
+      this.fc.text1.updateValueAndValidity();
+    });
+  }
+  save() {}
 }
