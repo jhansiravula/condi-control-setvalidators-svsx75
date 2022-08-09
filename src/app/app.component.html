@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+  <!-- <input type="checkbox" formControlName="optionA" /> Option A
+  <input type="checkbox" formControlName="optionB" /> Option B
+
+  <input
+    type="text"
+    formControlName="optionBExtra"
+    placeholder="Reason B"
+    *ngIf="optionB.value"
+  />
+  <input
+    type="text"
+    maxlength="5"
+    (keypress)="keyPressNumbers($event)"
+    formControlName="optionCExtra"
+    placeholder="Reason A & B"
+    *ngIf="optionA.value || optionB.value"
+  /> -->
+  <br />
+
+  <input type="text" formControlName="text1" /> &nbsp;
+  <input type="text" formControlName="text2" /> &nbsp;
+  <button type="button" (click)="save()">Submit</button>
+</form>
+
+<p>Form Value: {{ form.value | json }}</p>
+<p>Form Valid: {{ form.valid }}</p>
