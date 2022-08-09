@@ -20,7 +20,7 @@
 
   <input type="text" formControlName="text1" /> &nbsp;
   <input type="text" formControlName="text2" /> &nbsp;
-  <button type="button" (click)="save()">Submit</button>
+  <button type="button" [disabled]="isDisabled" (click)="save()">Submit</button>
 </form>
 
 <p>Form Value: {{ form.value | json }}</p>

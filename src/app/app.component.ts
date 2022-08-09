@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class AppComponent {
   form: FormGroup;
+  isDisabled = true;
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -85,18 +86,20 @@ export class AppComponent {
     return this.form.controls;
   }
   onchanges() {
-    this.form.valueChanges.subscribe((checked) => {
-      if (checked) {
-        this.fc.text1.setValidators([
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(10),
-        ]);
+    this.form.valueChanges.subscribe((value) => {
+      if (value) {
+        this.fc.text1.setValidators([Validators.required]);
       } else {
         this.fc.text1.setValidators(null);
       }
       this.fc.text1.updateValueAndValidity();
     });
   }
-  save() {}
+  save() {
+    let canSave = this.form.valid;
+    console.log(canSave);
+    if (canSave) {
+      this.isDisabled = true;
+    }
+  }
 }
